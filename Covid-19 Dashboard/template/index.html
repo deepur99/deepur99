@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Covid-19 Website</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/8/82/SARS-CoV-2_without_background.png" type="image/icon type">
+</head>
+<body style="background-color: ghostwhite; padding: 30px" >
+  <nav class="navbar fixed-top navbar-dark bg-dark" >
+<div class="container-fluid">
+  
+    <h5 class="text-center "style="color: white;" > <span style="color: red;"> 
+        Covid-19 </span> World Wide Data </h5>
+  
+<form class="form-inline">
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">@</span>
+    </div>
+    <input type="text" class="form-control" placeholder="Gmail Id" aria-label="Username" aria-describedby="basic-addon1">
+    <button class="btn btn-danger my-2 my-sm-0" type="submit"> Subscribe </button>
+  </div>
+</form>
+  
+</div>
+</nav>
+<br>
+<br>
+
+<!-- Nav -->
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;border-radius: 10px;
+box-shadow: 0 0 25px #aaa;">
+    <a class="navbar-brand" style="padding-left: 10px;" href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/SARS-CoV-2_without_background.png" width="70" height="70" class="d-inline-block align-top" alt="">
+        <span style=" font-size: 50px;padding-left: 10px; font-weight: 600;" class="text-success">Covid-19 Dashboard 
+        </span>
+      </a>
+</nav>
+<!-- Nav end -->
+<br>
+<!-- Card -->
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <h3 style="color: #008cbf;">Global Confirmed</h3>
+        <p>NewConfirmed: {{ GlobalResponses.NewConfirmed }}</p> 
+        <p>TotalConfirmed: {{ GlobalResponses.TotalConfirmed }}</p>
+        <p>Date: {{ GlobalResponses.Date}}</p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <h3 style="color: #008cbf;">Global Deaths</h3>
+        <p>NewDeaths: {{ GlobalResponses.NewDeaths }}</p>
+        <p>TotalDeaths: {{ GlobalResponses.TotalDeaths }}</p>
+        <p>Date: {{ GlobalResponses.Date}}</p>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <h3 style="color: #008cbf;">Global Recovered</h3>
+        <p>NewRecovered: {{ GlobalResponses.NewRecovered }}</p>
+        <p>TotalRecovered: {{ GlobalResponses.TotalRecovered }}</p>
+        <p>Date: {{ GlobalResponses.Date}}</p>
+    </div>
+  </div>
+</div>
+  
+<!-- Card end -->
+
+<!-- Start Table -->
+<table class="products-table">
+    <thead>
+      <tr class="text-center">
+        <th class="col-sm-2">
+          <select class="text-center form-control" style="border-radius: 25px;" name="selectedcountry">
+          <option>All Countries</option>
+          {% for newlists in responses %}
+          <option>{{ newlists.Country }}</option>
+          {% endfor %}
+        </select>
+      </th>
+        <th>NewConfirmed</th>
+        <th>TotalConfirmed</th>
+        <th>NewDeaths</th>
+        <th>TotalDeaths</th>
+        <th>NewRecovered</th>
+        <th>TotalRecovered</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for newlists in responses %}
+      <tr style="font-weight: 500;">
+        <td>
+          <a style="color: #00416A;">{{ newlists.Country }}</a>
+        </td>
+        <td>
+          {{ newlists.NewConfirmed }}
+        </td>
+        <td>
+          {{ newlists.TotalConfirmed }}
+        </td>
+        <td>
+          {{ newlists.NewDeaths }}
+        </td>
+        <td>
+          {{ newlists.TotalDeaths }} 
+        </td>
+        <td>
+          {{ newlists.NewRecovered }}
+        </td>
+        <td>
+            {{ newlists.TotalRecovered }}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!-- End Table -->
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  
+</body>
+<style type="text/css"> 
+select {
+width: 100%;
+padding: 16px 20px;
+border: none;
+border-radius: 4px;
+background-color: #f1f1f1;
+border-radius: 50px;
+}
+input[type=submit] {
+background-color: #4CAF50;
+border: none;
+color: white;
+padding: 15px 32px;
+cursor: pointer;
+border-radius: 25px;
+}
+#rcorners2 {
+border-radius: 25px;
+border: 2px solid #73AD21;
+padding: 20px;   
+}
+
+input {border-radius: 12px;}
+table.products-table {
+border-collapse: separate;
+border-radius: 10px;
+border-spacing: 0;
+box-shadow: 0 0 25px #aaa;
+margin: 4rem 0;
+width: 100%;
+}
+
+th {
+font-size:larger;
+background-color: #e3f2fd;
+font-weight: 600;
+border-bottom: 1px solid #d1d1d1;
+color: #00416a;
+}
+option{
+text-align: left;
+font-size:larger;
+background-color: #e3f2fd;
+font-weight: 600;
+border-bottom: 1px solid #d1d1d1;
+color: #00416a;
+}
+
+th,
+td {
+line-height: 1.5;
+padding: 0.75em;
+text-align: center;
+}
+
+td {
+background-color: white;
+}
+
+td:first-child {
+font-weight: bold;
+text-align: left;
+}
+
+tbody tr:nth-child(odd) td {
+background-color: #f6f6f6;
+}
+
+thead th:first-child {
+  border-top-left-radius: 10px;
+  text-align: left;
+}
+
+thead th:last-child {
+  border-top-right-radius: 10px;
+}
+
+tbody tr:last-child td:first-child {
+border-bottom-left-radius: 10px;
+}
+
+tbody tr:last-child td:last-child {
+border-bottom-right-radius: 10px;
+}
+
+/* Stack rows vertically on small screens */
+@media (max-width: 30rem) {
+/* Hide column labels */
+thead tr {
+  position: absolute;
+  top: -9999rem;
+  left: -9999rem;
+}
+
+tbody tr td {
+  border-radius: none;
+  text-align: left;
+}
+body{
+  font-family: sans-serif;
+}
+
+tbody tr:first-child td:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+tbody tr:last-child td:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Leave a space between table rows */
+tr + tr td:first-child {
+  border-top: 1px solid #d1d1d1;
+}
+
+/* Get table cells to act like rows */
+tr,
+td {
+  display: block;
+}
+
+td {
+  border: none;
+  /* Leave a space for data labels */
+  padding-left: 50%;
+}
+
+/* Data labels */
+td:before {
+  content: attr(data-label);
+  display: inline-block;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-left: -100%;
+  width: 100%;
+}
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 33%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+p{
+  color: #00416A;
+  font-weight: 500;
+}
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 0 25px #aaa;
+  padding: 16px;
+  text-align: center;
+  background-color: #fff;
+}
+</style>
+</html>
